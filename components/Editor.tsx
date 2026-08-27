@@ -129,7 +129,8 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
     if (!canvas) return;
     import("fabric").then(({ fabric }) => {
       const text = new fabric.IText("Ketik di sini", { left: 100, top: 100, fontSize: 48, fill: "#1b1a1f" });
-      canvas.add(text).setActiveObject(text);
+      canvas.add(text);
+      canvas.setActiveObject(text);
       canvas.renderAll();
     });
   }
@@ -142,7 +143,8 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
       if (kind === "rect") shape = new fabric.Rect({ left: 120, top: 120, width: 200, height: 140, fill: "#5b5bd6", rx: 8, ry: 8 });
       else if (kind === "circle") shape = new fabric.Circle({ left: 150, top: 150, radius: 90, fill: "#e08a3c" });
       else shape = new fabric.Triangle({ left: 150, top: 150, width: 160, height: 140, fill: "#3ca66b" });
-      canvas.add(shape).setActiveObject(shape);
+      canvas.add(shape);
+      canvas.setActiveObject(shape);
       canvas.renderAll();
     });
   }
@@ -157,7 +159,8 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
         fabric.Image.fromURL(f.target?.result as string, (img) => {
           img.scaleToWidth(300);
           img.set({ left: 100, top: 100 });
-          canvas.add(img).setActiveObject(img);
+          canvas.add(img);
+          canvas.setActiveObject(img);
           canvas.renderAll();
         });
       });
@@ -200,7 +203,7 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
 
   function setFontFamily(fontFamily: string) {
     if (!selected) return;
-    selected.set("fontFamily", fontFamily);
+    (selected as any).set("fontFamily", fontFamily);
     fabricRef.current?.renderAll();
     forceRerender((n) => n + 1);
     scheduleSave();
