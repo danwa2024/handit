@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import type { Canvas as FabricCanvas, Object as FabricObject } from "fabric/fabric-impl";
+
+type FabricCanvas = any;
+type FabricObject = any;
 
 type Props = {
   designId: string;
