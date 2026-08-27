@@ -222,6 +222,7 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
       // library ini berisi kode WASM (ort-wasm) yang tidak kompatibel dengan cara
       // webpack Next.js mem-bundle kode server. Komentar /* webpackIgnore: true */
       // memberi tahu webpack untuk melewati file ini sepenuhnya saat build.
+      // @ts-expect-error - dynamic import dari CDN, tidak ada type declaration
       const { removeBackground } = await import(
         /* webpackIgnore: true */ "https://esm.sh/@imgly/background-removal@1.5.7"
       );
