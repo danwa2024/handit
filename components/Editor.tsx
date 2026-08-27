@@ -223,9 +223,7 @@ export default function Editor({ designId, initialTitle, initialContent, width, 
       // webpack Next.js mem-bundle kode server. Komentar /* webpackIgnore: true */
       // memberi tahu webpack untuk melewati file ini sepenuhnya saat build.
       // @ts-ignore - dynamic import dari CDN, tidak ada type declaration
-      const { removeBackground } = await import(
-        /* webpackIgnore: true */ "https://esm.sh/@imgly/background-removal@1.5.7"
-      );
+      Sconst { removeBackground } = await import(/* webpackIgnore: true */ "https://esm.sh/@imgly/background-removal@1.5.7");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const imageObj = selected as any;
       const sourceUrl: string = imageObj.getSrc();
